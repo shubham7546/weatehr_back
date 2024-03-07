@@ -12,12 +12,21 @@ const PORT = process.env.PORT || 5000;
 
 const { fetchWeather } = require("./services/operations/fetchWeather");
 
-app.use(
-    cors({
-        origin: process.env.FRONT_END_URL,
-        credentials: true,
-    })
-)
+const allowedOrigins = [process.env.FRONT_END_URL, 'http://localhost:3000'];
+
+// Set up CORS middleware with multiple origins
+app.use(cors({
+    origin: function (origin, callback) {
+        // Check if the incoming origin is in the allowed origins array
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
+
 
 //middleware
 app.use(express.json());//to parse json content coming from client to object 
