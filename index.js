@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
+// const cors = require("cors");
 
 
 
@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 5000;
 
 const { fetchWeather } = require("./services/operations/fetchWeather");
 
-app.use(
-    cors({
-        origin: "http://localhost:3000",
-        credentials: true,
-    })
-)
+// app.use(
+//     cors({
+//         origin: "http://localhost:3000",
+//         credentials: true,
+//     })
+// )
 
 //middleware
 app.use(express.json());//to parse json content coming from client to object 
