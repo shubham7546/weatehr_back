@@ -14,7 +14,7 @@ const { fetchWeather } = require("./services/operations/fetchWeather");
 
 app.use(
     cors({
-        origin: "https://weatehr-back.onrender.com",
+        origin: process.env.FRONT_END_URL,
         credentials: true,
     })
 )
